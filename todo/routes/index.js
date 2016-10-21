@@ -6,7 +6,7 @@ var dbdo = require('../model/dbdo');
 router.get('/', dbdo.displayAll);
 router.post('/create', dbdo.createItem);
 router.get('/delete/:id', dbdo.deleteItem);
-router.post('/edit/:id', dbdo.editItem)
+router.get('/edit/:id', dbdo.editItem);
 
 
 
