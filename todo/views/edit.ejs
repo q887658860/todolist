@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+   <form action="/create" method="post" accept-charset="utf-8" />
+   <input type="text" name="content">
+   </form>
+   <% todos.forEach(function(todo){ %>
+    <%= if(todo._id == current) { %>
+      <form action="/create" method="post" accept-charset="utf-8" />
+      <input type="text" name="content" value="<%= todo.content %>">
+      </form>
+    <% } else { %>
+      <a href="/edit/<%= todo._id %>"><%= todo.content %></a>
+    <% } %>
+   		<p>
+   			<span><%= todo.content %></span>
+   			<span><a href="/delete/<%= todo._id%>">Delete</a></span>
+   		</p>
+   <% }); %>
+   
+  </body>
+</html>
