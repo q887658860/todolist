@@ -7,6 +7,7 @@ router.get('/', dbdo.displayAll);
 router.post('/create', dbdo.createItem);
 router.get('/delete/:id', dbdo.deleteItem);
 router.get('/edit/:id', dbdo.editItem);
+router.post('/update/:id', dbdo.updateItem);
 
 
 

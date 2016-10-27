@@ -41,6 +41,15 @@ var editItem = function(req, res) {
 	});
 }
 
+var updateItem = function(req, res){
+	Todo.findById(req.params.id, function(err, todo) {
+		todo.content = req.body.content;
+		todo.updated_at = Date.now();
+		todo.save(function(err, todo, count) {
+			res.redirect('/');
+		});
+	});
+}
 
 
 
@@ -48,4 +57,5 @@ exports.createItem = createItem;
 exports.displayAll = displayAll;
 exports.deleteItem = deleteItem;
 exports.editItem = editItem;
+exports.updateItem = updateItem;
 
