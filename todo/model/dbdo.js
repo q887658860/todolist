@@ -51,10 +51,19 @@ var updateItem = function(req, res){
 	});
 }
 
+var displaySort = function(req, res) {
+	Todo.find().sort('-updated_at').exec(function(err, todos){
+		res.render('index', {
+			title: 'Express Todo Demo',
+			todos: todos
+		});
+	});
+}
+
 
 
 exports.createItem = createItem;
-exports.displayAll = displayAll;
+exports.displayAll = displaySort;
 exports.deleteItem = deleteItem;
 exports.editItem = editItem;
 exports.updateItem = updateItem;
