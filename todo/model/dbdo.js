@@ -41,6 +41,16 @@ var editItem = function(req, res) {
 	});
 }
 
+var editItemSort = function(req,res) {
+	Todo.find().sort('-updated_at').exec(function(err, todos){
+		res.render('edit', {
+			title: 'Express Todo Demo',
+			todos: todos,
+			current: req.params.id
+		});
+	});
+}
+
 var updateItem = function(req, res){
 	Todo.findById(req.params.id, function(err, todo) {
 		todo.content = req.body.content;
@@ -63,8 +73,9 @@ var displaySort = function(req, res) {
 
 
 exports.createItem = createItem;
-exports.displayAll = displaySort;
+exports.displayAll = displaySort; //make index page item sorted by update_id
 exports.deleteItem = deleteItem;
-exports.editItem = editItem;
+exports.editItem = editItemSort; //make edit page item sorted by update_id
 exports.updateItem = updateItem;
+// exports.displaySort = displaySort;
 
