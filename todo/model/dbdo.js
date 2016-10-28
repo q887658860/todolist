@@ -70,12 +70,19 @@ var displaySort = function(req, res) {
 	});
 }
 
-
+var displaySortByContent = function(req, res) {
+	Todo.find().sort('content').exec(function(err, todos){
+		res.render('index', {
+			title: 'Express Todo Demo',
+			todos: todos
+		});
+	});
+}
 
 exports.createItem = createItem;
 exports.displayAll = displaySort; //make index page item sorted by update_id
 exports.deleteItem = deleteItem;
 exports.editItem = editItemSort; //make edit page item sorted by update_id
 exports.updateItem = updateItem;
-// exports.displaySort = displaySort;
+exports.displaySortByContent = displaySortByContent;
 
